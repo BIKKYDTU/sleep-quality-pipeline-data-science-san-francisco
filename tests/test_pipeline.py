@@ -1,46 +1,4 @@
-# ── COVERAGE MAP ──────────────────────────────────────
-# R-1   load_and_merge_data returns DataFrame with all 9 required columns
-#          → test_load_and_merge_returns_all_required_columns
-# R-2   inner join: dates absent from any source file are excluded
-#          → test_load_and_merge_inner_join_excludes_unmatched_dates
-# R-3   rows with missing values are dropped from the merged DataFrame
-#          → test_load_and_merge_drops_rows_with_missing_values
-# R-4   compute_sleep_quality_score appends sleep_quality_score column and returns DataFrame
-#          → test_compute_sleep_quality_score_appends_column
-# R-5   score formula: 0.4*deep_min + 0.3*rem_min + 0.2*light_min - 0.1*awake_min
-#          → test_compute_sleep_quality_score_formula
-# R-6   fit_model returns a 2-element tuple
-#          → test_fit_model_returns_ndarray_of_four_coefficients
-# R-7   first tuple element is np.ndarray of exactly 4 standardized regression coefficients
-#          → test_fit_model_returns_ndarray_of_four_coefficients
-# R-8   feature columns are standardized to zero mean and unit variance before fitting
-#          → test_fit_model_returns_ndarray_of_four_coefficients
-# R-9   second tuple element is the ordered list of 4 feature names exactly as specified
-#          → test_fit_model_returns_correct_feature_names
-# R-10  rank_and_summarize prints all 4 features ranked in format '<rank>. <feature_name>: <coef>'
-#          → test_rank_and_summarize_output_format
-# R-11  coefficient in each ranked line is rounded to 4 decimal places
-#          → test_rank_and_summarize_coefficient_rounded_to_four_places
-# R-12  features are printed in ascending coefficient order (most negative first)
-#          → test_rank_and_summarize_ascending_order
-# R-13  summary considers only the 3 habit features; steps is never named in summary
-#          → test_rank_and_summarize_steps_excluded_from_habit_summary
-# R-14  when ≥1 habit feature has a negative coefficient, summary is
-#          'Most regrettable habit: <feature_name>' naming the most-negative habit
-#          → test_rank_and_summarize_negative_habit_summary
-# R-15  when no habit feature has a negative coefficient, summary is
-#          'No lifestyle habit showed a negative association in this model.'
-#          → test_rank_and_summarize_no_negative_habit_summary
-# R-16  rank_and_summarize returns None
-#          → test_rank_and_summarize_returns_none
-# R-17  main calls the pipeline with the default CSV paths under data/
-#          → test_main_produces_ranked_output
-# R-18  main writes a 4-line ranked list and a valid summary line to stdout
-#          → test_main_produces_ranked_output
-#
-# Total testable requirements : 18
-# Total tests                 : 15
-# ──────────────────────────────────────────────────────
+
 
 import contextlib
 import io
@@ -680,17 +638,3 @@ class TestMain:
             )
 
 
-# ── SELF-AUDIT ─────────────────────────────────────────
-# Total tests           : 15
-# Overly specific       : 0   (0.0%)
-# Overly broad          : 0   (0.0%)
-# Total problematic     : 0   (0.0%)
-# Uncovered requirements: 0
-# All 8 checks          : PASS
-#
-# Fixes applied vs. prior version:
-#   test_rank_and_summarize_output_format — CHECK 7 fix: added
-#     set(extracted_names) == set(feature_names) assertion to guarantee
-#     all 4 distinct features appear in the ranked output, preventing an
-#     invalid implementation that repeats the same feature from passing.
-# ──────────────────────────────────────────────────────
