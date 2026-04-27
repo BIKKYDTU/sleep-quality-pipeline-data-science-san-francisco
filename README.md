@@ -1,6 +1,24 @@
 # Sleep Quality Pipeline
 
-A data science pipeline that joins nightly sleep stages with daily lifestyle habits, computes a sleep quality score, and ranks which habits hurt your sleep the most.
+> A data science pipeline that joins nightly sleep stages with daily lifestyle habits, computes a sleep quality score, and ranks which habits hurt your sleep the most.
+
+---
+
+## Description
+
+Most people have a gut feeling about what ruins their sleep — late-night coffee, a glass of wine, too much screen time — but rarely have the data to back it up. This project changes that.
+
+Using a year of real fitness tracker exports, this pipeline automatically:
+
+- **Merges** four data sources (sleep stages, step counts, screen time, lifestyle logs) into a single daily record
+- **Scores** each night's sleep using a weighted formula that rewards deep and REM sleep while penalising time spent awake
+- **Models** the relationship between your daily habits and your sleep quality using linear regression
+- **Ranks** every lifestyle input by how strongly it pushes your sleep score up or down
+- **Identifies** the single habit that is doing the most damage — the one you would most regret keeping
+
+The result is a ranked, data-driven answer to the question: *"What is actually costing me my sleep?"*
+
+This project is built entirely in Python using `pandas`, `numpy`, and `scikit-learn`. It is designed to run locally, inside Docker, or as part of a larger data science workflow.
 
 ---
 
