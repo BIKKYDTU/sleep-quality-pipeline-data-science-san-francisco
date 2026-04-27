@@ -1,0 +1,42 @@
+# Sleep Quality Lifestyle Impact Analysis Pipeline — Evaluation Rubrics
+
+## Coverage Note
+Tests already verify R-1 through R-18 (all schema, join, formula, model correctness, ranked output format, rounding, ordering, habit filtering, summary text, return types, and `main()` output). The rubrics below cover requirements **not** verifiable by the test suite.
+
+---
+
+## Rubric Criteria
+
+**[#1]** The only third-party Python packages imported and used in the solution are pandas, numpy, and scikit-learn.
+**Weight: 5 | Dimension: instruction_following**
+**Justification:** Tests do not scan `import` statements, so a submission could use unauthorized libraries (e.g., `scipy`, `statsmodels`) and still pass. Manual inspection of all imports in the solution file is required.
+
+---
+
+**[#2]** `main` calls `load_and_merge_data`, `compute_sleep_quality_score`, `fit_model`, and `rank_and_summarize` as discrete sub-function calls in that sequential order, passing each function's return value as the input to the next step.
+**Weight: 5 | Dimension: instruction_following**
+**Justification:** The `main()` test only checks stdout output, not internal call order or argument-passing. Manual review of the `main` function body is needed to confirm the correct sequence and chaining of return values.
+
+---
+
+**[#3]** All feature and sleep-stage data is read from the four CSV files at runtime; every data value in the DataFrame is derived exclusively from the content of those files.
+**Weight: 5 | Dimension: instruction_following**
+**Justification:** Tests verify output values but cannot detect hardcoded constants that happen to match the fixture data. Manual review is required to confirm no data values are embedded directly in the code.
+
+---
+
+**[#4]** Each of the four pipeline functions (`load_and_merge_data`, `compute_sleep_quality_score`, `fit_model`, `rank_and_summarize`) confines its implementation exclusively to its designated pipeline step: `load_and_merge_data` handles only data loading and merging, `compute_sleep_quality_score` handles only score computation, `fit_model` handles only standardization and regression fitting, and `rank_and_summarize` handles only ranked printing.
+**Weight: 3 | Dimension: code_quality**
+**Justification:** Tests validate each function's output in isolation but cannot detect when a function silently performs another step's work. Manual code review is needed to confirm responsibilities are not mixed across pipeline stages.
+
+---
+
+**[#5]** The `sleep_quality_score` computation inside `compute_sleep_quality_score` is implemented using vectorized pandas or numpy column arithmetic (e.g., scalar multiplication and addition of Series objects) rather than a row-by-row Python loop such as `iterrows`, `itertuples`, or `apply` with a row-wise lambda.
+**Weight: 1 | Dimension: code_efficiency**
+**Justification:** The formula test checks numeric correctness only; a row-by-row loop produces identical values on small data. Manual inspection of the function body is required to confirm vectorized implementation.
+
+---
+
+**[#6]** All user-defined variable and function names are at least three characters long; one- or two-character names are acceptable only when they follow an established mathematical or library convention, such as `X` for the feature matrix, `y` for the target vector, or `df` for a DataFrame.
+**Weight: 1 | Dimension: code_clarity**
+**Justification:** No test checks variable names; short throwaway identifiers are invisible to the test suite. Manual review of the solution source is needed to verify all names are sufficiently descriptive.

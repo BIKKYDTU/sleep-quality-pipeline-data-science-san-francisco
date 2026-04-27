@@ -1,0 +1,64 @@
+{
+  "tests": [
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestLoadAndMergeData::test_load_and_merge_returns_all_required_columns",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestLoadAndMergeData::test_load_and_merge_inner_join_excludes_unmatched_dates",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestLoadAndMergeData::test_load_and_merge_drops_rows_with_missing_values",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestComputeSleepQualityScore::test_compute_sleep_quality_score_appends_column",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestComputeSleepQualityScore::test_compute_sleep_quality_score_formula",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestFitModel::test_fit_model_returns_ndarray_of_four_coefficients",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestFitModel::test_fit_model_returns_correct_feature_names",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_output_format",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_ascending_order",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_coefficient_rounded_to_four_places",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_negative_habit_summary",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_steps_excluded_from_habit_summary",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_no_negative_habit_summary",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_returns_none",
+      "status": "FAILED"
+    },
+    {
+      "name": "../eval_assets/tests/test_pipeline.py::TestMain::test_main_produces_ranked_output",
+      "status": "FAILED"
+    }
+  ]
+}

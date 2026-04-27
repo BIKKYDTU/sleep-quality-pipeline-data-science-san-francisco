@@ -1,0 +1,151 @@
+Running all tests...
+============================= test session starts ==============================
+collecting ... collected 15 items
+
+../eval_assets/tests/test_pipeline.py::TestLoadAndMergeData::test_load_and_merge_returns_all_required_columns FAILED [  6%]
+../eval_assets/tests/test_pipeline.py::TestLoadAndMergeData::test_load_and_merge_inner_join_excludes_unmatched_dates FAILED [ 13%]
+../eval_assets/tests/test_pipeline.py::TestLoadAndMergeData::test_load_and_merge_drops_rows_with_missing_values FAILED [ 20%]
+../eval_assets/tests/test_pipeline.py::TestComputeSleepQualityScore::test_compute_sleep_quality_score_appends_column FAILED [ 26%]
+../eval_assets/tests/test_pipeline.py::TestComputeSleepQualityScore::test_compute_sleep_quality_score_formula FAILED [ 33%]
+../eval_assets/tests/test_pipeline.py::TestFitModel::test_fit_model_returns_ndarray_of_four_coefficients FAILED [ 40%]
+../eval_assets/tests/test_pipeline.py::TestFitModel::test_fit_model_returns_correct_feature_names FAILED [ 46%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_output_format FAILED [ 53%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_ascending_order FAILED [ 60%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_coefficient_rounded_to_four_places FAILED [ 66%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_negative_habit_summary FAILED [ 73%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_steps_excluded_from_habit_summary FAILED [ 80%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_no_negative_habit_summary FAILED [ 86%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_returns_none FAILED [ 93%]
+../eval_assets/tests/test_pipeline.py::TestMain::test_main_produces_ranked_output FAILED [100%]
+
+=================================== FAILURES ===================================
+____ TestLoadAndMergeData.test_load_and_merge_returns_all_required_columns _____
+/eval_assets/tests/test_pipeline.py:190: in test_load_and_merge_returns_all_required_columns
+    assert col in df.columns, f"Expected column '{col}' is missing"
+E   AssertionError: Expected column 'date' is missing
+E   assert 'date' in RangeIndex(start=0, stop=0, step=1)
+E    +  where RangeIndex(start=0, stop=0, step=1) = Empty DataFrame\nColumns: []\nIndex: [].columns
+_ TestLoadAndMergeData.test_load_and_merge_inner_join_excludes_unmatched_dates _
+/eval_assets/tests/test_pipeline.py:232: in test_load_and_merge_inner_join_excludes_unmatched_dates
+    assert len(df) == len(common_dates)
+E   AssertionError: assert 0 == 2
+E    +  where 0 = len(Empty DataFrame\nColumns: []\nIndex: [])
+E    +  and   2 = len(['2023-03-01', '2023-03-02'])
+___ TestLoadAndMergeData.test_load_and_merge_drops_rows_with_missing_values ____
+/eval_assets/tests/test_pipeline.py:278: in test_load_and_merge_drops_rows_with_missing_values
+    assert len(df) == 1  # only 2023-05-01 has no NaN
+E   assert 0 == 1
+E    +  where 0 = len(Empty DataFrame\nColumns: []\nIndex: [])
+_ TestComputeSleepQualityScore.test_compute_sleep_quality_score_appends_column _
+/eval_assets/tests/test_pipeline.py:295: in test_compute_sleep_quality_score_appends_column
+    assert "sleep_quality_score" in result.columns
+E   AssertionError: assert 'sleep_quality_score' in RangeIndex(start=0, stop=0, step=1)
+E    +  where RangeIndex(start=0, stop=0, step=1) = Empty DataFrame\nColumns: []\nIndex: [].columns
+____ TestComputeSleepQualityScore.test_compute_sleep_quality_score_formula _____
+/usr/local/lib/python3.10/dist-packages/pandas/core/indexes/base.py:3812: in get_loc
+    return self._engine.get_loc(casted_key)
+pandas/_libs/index.pyx:167: in pandas._libs.index.IndexEngine.get_loc
+    ???
+pandas/_libs/index.pyx:196: in pandas._libs.index.IndexEngine.get_loc
+    ???
+pandas/_libs/hashtable_class_helper.pxi:7088: in pandas._libs.hashtable.PyObjectHashTable.get_item
+    ???
+pandas/_libs/hashtable_class_helper.pxi:7096: in pandas._libs.hashtable.PyObjectHashTable.get_item
+    ???
+E   KeyError: 'sleep_quality_score'
+
+The above exception was the direct cause of the following exception:
+/eval_assets/tests/test_pipeline.py:327: in test_compute_sleep_quality_score_formula
+    result["sleep_quality_score"].reset_index(drop=True),
+/usr/local/lib/python3.10/dist-packages/pandas/core/frame.py:4113: in __getitem__
+    indexer = self.columns.get_loc(key)
+/usr/local/lib/python3.10/dist-packages/pandas/core/indexes/base.py:3819: in get_loc
+    raise KeyError(key) from err
+E   KeyError: 'sleep_quality_score'
+_______ TestFitModel.test_fit_model_returns_ndarray_of_four_coefficients _______
+/eval_assets/tests/test_pipeline.py:354: in test_fit_model_returns_ndarray_of_four_coefficients
+    assert coefficients.shape == (4,)
+E   AssertionError: assert (0,) == (4,)
+E     
+E     At index 0 diff: 0 != 4
+E     
+E     Full diff:
+E       (
+E     -     4,
+E     ?     ^...
+E     
+E     ...Full output truncated (3 lines hidden), use '-vv' to show
+__________ TestFitModel.test_fit_model_returns_correct_feature_names ___________
+/eval_assets/tests/test_pipeline.py:376: in test_fit_model_returns_correct_feature_names
+    assert feature_names == FEATURE_NAMES
+E   AssertionError: assert [] == ['steps', 'sc...e_after_noon']
+E     
+E     Right contains 4 more items, first extra item: 'steps'
+E     
+E     Full diff:
+E     + []
+E     - [
+E     -     'steps',...
+E     
+E     ...Full output truncated (4 lines hidden), use '-vv' to show
+__________ TestRankAndSummarize.test_rank_and_summarize_output_format __________
+/eval_assets/tests/test_pipeline.py:399: in test_rank_and_summarize_output_format
+    assert len(lines) == 5, (
+E   AssertionError: Expected exactly 5 output lines (4 ranked + 1 summary), got 0
+E   assert 0 == 5
+E    +  where 0 = len([])
+_________ TestRankAndSummarize.test_rank_and_summarize_ascending_order _________
+/eval_assets/tests/test_pipeline.py:456: in test_rank_and_summarize_ascending_order
+    assert len(ranked_lines) == 4, (
+E   AssertionError: Expected exactly 4 ranked output lines, got 0
+E   assert 0 == 4
+E    +  where 0 = len([])
+_ TestRankAndSummarize.test_rank_and_summarize_coefficient_rounded_to_four_places _
+/eval_assets/tests/test_pipeline.py:487: in test_rank_and_summarize_coefficient_rounded_to_four_places
+    assert len(ranked_lines) == 4, (
+E   AssertionError: Expected exactly 4 ranked output lines, got 0
+E   assert 0 == 4
+E    +  where 0 = len([])
+_____ TestRankAndSummarize.test_rank_and_summarize_negative_habit_summary ______
+/eval_assets/tests/test_pipeline.py:527: in test_rank_and_summarize_negative_habit_summary
+    summary_line = output.strip().splitlines()[-1]
+E   IndexError: list index out of range
+_ TestRankAndSummarize.test_rank_and_summarize_steps_excluded_from_habit_summary _
+/eval_assets/tests/test_pipeline.py:551: in test_rank_and_summarize_steps_excluded_from_habit_summary
+    summary_line = output.strip().splitlines()[-1]
+E   IndexError: list index out of range
+____ TestRankAndSummarize.test_rank_and_summarize_no_negative_habit_summary ____
+/eval_assets/tests/test_pipeline.py:575: in test_rank_and_summarize_no_negative_habit_summary
+    summary_line = output.strip().splitlines()[-1]
+E   IndexError: list index out of range
+__________ TestRankAndSummarize.test_rank_and_summarize_returns_none ___________
+/eval_assets/tests/test_pipeline.py:594: in test_rank_and_summarize_returns_none
+    assert len(output.strip()) > 0, (
+E   AssertionError: rank_and_summarize must write output to stdout but produced nothing
+E   assert 0 > 0
+E    +  where 0 = len('')
+E    +    where '' = <built-in method strip of str object at 0x70bc16094030>()
+E    +      where <built-in method strip of str object at 0x70bc16094030> = ''.strip
+__________________ TestMain.test_main_produces_ranked_output ___________________
+/eval_assets/tests/test_pipeline.py:617: in test_main_produces_ranked_output
+    assert len(lines) == 5, (
+E   AssertionError: Expected exactly 5 output lines from main(), got 0
+E   assert 0 == 5
+E    +  where 0 = len([])
+=========================== short test summary info ============================
+FAILED ../eval_assets/tests/test_pipeline.py::TestLoadAndMergeData::test_load_and_merge_returns_all_required_columns
+FAILED ../eval_assets/tests/test_pipeline.py::TestLoadAndMergeData::test_load_and_merge_inner_join_excludes_unmatched_dates
+FAILED ../eval_assets/tests/test_pipeline.py::TestLoadAndMergeData::test_load_and_merge_drops_rows_with_missing_values
+FAILED ../eval_assets/tests/test_pipeline.py::TestComputeSleepQualityScore::test_compute_sleep_quality_score_appends_column
+FAILED ../eval_assets/tests/test_pipeline.py::TestComputeSleepQualityScore::test_compute_sleep_quality_score_formula
+FAILED ../eval_assets/tests/test_pipeline.py::TestFitModel::test_fit_model_returns_ndarray_of_four_coefficients
+FAILED ../eval_assets/tests/test_pipeline.py::TestFitModel::test_fit_model_returns_correct_feature_names
+FAILED ../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_output_format
+FAILED ../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_ascending_order
+FAILED ../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_coefficient_rounded_to_four_places
+FAILED ../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_negative_habit_summary
+FAILED ../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_steps_excluded_from_habit_summary
+FAILED ../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_no_negative_habit_summary
+FAILED ../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_returns_none
+FAILED ../eval_assets/tests/test_pipeline.py::TestMain::test_main_produces_ranked_output
+============================== 15 failed in 2.76s ==============================

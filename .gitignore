@@ -1,0 +1,12 @@
+# Exclude instruction folder
+instruction/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Zip artifacts (keep only app/ zips)
+codebase.zip
+tests.zip

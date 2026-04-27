@@ -1,0 +1,21 @@
+Running all tests...
+============================= test session starts ==============================
+collecting ... collected 15 items
+
+../eval_assets/tests/test_pipeline.py::TestLoadAndMergeData::test_load_and_merge_returns_all_required_columns PASSED [  6%]
+../eval_assets/tests/test_pipeline.py::TestLoadAndMergeData::test_load_and_merge_inner_join_excludes_unmatched_dates PASSED [ 13%]
+../eval_assets/tests/test_pipeline.py::TestLoadAndMergeData::test_load_and_merge_drops_rows_with_missing_values PASSED [ 20%]
+../eval_assets/tests/test_pipeline.py::TestComputeSleepQualityScore::test_compute_sleep_quality_score_appends_column PASSED [ 26%]
+../eval_assets/tests/test_pipeline.py::TestComputeSleepQualityScore::test_compute_sleep_quality_score_formula PASSED [ 33%]
+../eval_assets/tests/test_pipeline.py::TestFitModel::test_fit_model_returns_ndarray_of_four_coefficients PASSED [ 40%]
+../eval_assets/tests/test_pipeline.py::TestFitModel::test_fit_model_returns_correct_feature_names PASSED [ 46%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_output_format PASSED [ 53%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_ascending_order PASSED [ 60%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_coefficient_rounded_to_four_places PASSED [ 66%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_negative_habit_summary PASSED [ 73%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_steps_excluded_from_habit_summary PASSED [ 80%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_no_negative_habit_summary PASSED [ 86%]
+../eval_assets/tests/test_pipeline.py::TestRankAndSummarize::test_rank_and_summarize_returns_none PASSED [ 93%]
+../eval_assets/tests/test_pipeline.py::TestMain::test_main_produces_ranked_output PASSED [100%]
+
+============================== 15 passed in 1.23s ==============================
